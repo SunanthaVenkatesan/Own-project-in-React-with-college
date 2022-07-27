@@ -1,0 +1,76 @@
+Limitations of JSX:
+Two JSX element cannot be adjacent to each other  and cannot return  and we also can't store more than one 
+root JSX in a variable without wrapping with <div> or some custom component
+Sometimes if we use array [],instaed of {}(JSX) we can return more than one element
+
+return
+    [
+        //written in this way is array format
+        and this is hard coded and not dynamic ,which requires a key always which is not optimized everytime 
+    ]
+So always JSX with wrapping is used 
+
+rendering too many div is actually rendering too many HTML elements which may slow down the execution and it
+is not ideal as react needs to check for each of the element for its content 
+example:
+<div>
+<div>
+<div>
+<h2></h2>
+</div>
+</div>
+</div>
+
+
+Fragments:
+Sometimes fragments can be used as an alternative to wrapping and it doesnt render real HTML elements and fulfill react JSX requirement 
+eg:
+return(
+    <React.Fragment> or <>
+    <h2></h2>
+    <p></p>
+    </React.Fragment> or </> 
+    
+)
+and the React fragment will work only by importing react or fragment can be added as a named import seperately
+like import React,{fragment} from React and when fragnent is seperately imported
+return(
+    <Fragment> or <>
+    <h2></h2>
+    <p></p>
+    <Fragment> or </> 
+    
+)
+can be used
+
+
+React Portals;
+help us write cleaner code and normally whne using div with DOM is not ideal and hence portals come in 
+
+        {ReactDom.createPortal()}//React DOm is imported and createPortal is called which takes 2 args(react node that is rendered) and 
+        (pointer to that container in the dom API  where it should be rendered) 
+        The idea behind portal is that the rendered HTML content is moved somewhere else 
+        In the error modal the portals are used ..please check
+        eg:
+        {ReactDom.createPortal(
+        <BackDrop onConfirm={props.onConfirm} />,
+        document.getElementById("backdrop-root")
+      )}
+
+working with REfs:(Refrences)-makes the code shorter compared to useStates 
+
+
+Refs allows us to get access to othetr DOM elements and work with them and to avoid redendancy while using states
+ Refs set up the connection btw the HTML element and the other javascript code and useRef is imported just like useState
+check Adduser.js as Refs are added in that which always has a current property and it is a DOM node otherwise we wilbe using ...prev
+
+Refs should be rarely used to manipulate DOM and not all the time 
+
+refs are used as an alternative of showing input fields like useStates 
+Refs have some exceptions in DOM and have short code 
+UseStates are mjuch cleaner and long code
+
+
+CONTROLED VS UNCONTROLLED COMPONENTS :
+uncontroled input compents are used while using REFs 
+The UseStates uses CONTROLED react component as the internal state is controlled by react
